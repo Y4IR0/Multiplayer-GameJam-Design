@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         
-        rigidbody2D.linearVelocity =  Vector2.zero;
+        rigidbody2D.linearVelocity = Vector2.zero;
         isMoving = false;
     }
 

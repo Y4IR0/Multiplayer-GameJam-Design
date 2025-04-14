@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -9,11 +12,49 @@ public class GameManager : MonoBehaviour
 
     public Transform NPCPrefab;
     public float npcSpawnAmount = 100;
+    
+    public Transform player1;
+    public Transform player2;
+    
+    public Health player1Health;
+    public Health player2Health;
 
+    public UnityEvent<int> roundEnd;
+    public UnityEvent roundStart;
+    
+    
+    
+    public bool isRoundOver = false;
+
+
+
+    private void TryGetPlayers()
+    {
+        //if (!player1 || !player2) return;
+        
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
+        {
+            if (player.TryGetComponent<PlayerInput>(out PlayerInput input));
+            {
+                if (input.user.id == 1)
+                {
+                    player1 = player.transform;
+                    player1Health = player.GetComponent<Health>();
+                }
+                else if (input.user.id == 2)
+                {
+                    player2 = player.transform;
+                    player2Health = player.GetComponent<Health>();
+                }
+            }
+        }
+    }
+    
     private void Start()
     {
         instance = this;
-        
         movementBoundary = GameObject.Find("MovementBoundary").transform;
 
         for (int i = 0; i < npcSpawnAmount; i++)
@@ -26,5 +67,40 @@ public class GameManager : MonoBehaviour
             
             newNPC.position = spawnPosition;
         }
+
+        TryGetPlayers();
+        StartRound();
+    }
+
+    IEnumerator EndRound(int winnerID)
+    {
+        print("END ROUNDED");
+        isRoundOver = true;
+        roundEnd.Invoke(winnerID);
+        
+        yield return new WaitForSeconds(3);
+
+        isRoundOver = false;
+        StartRound();
+    }
+    
+    void StartRound()
+    {
+        roundStart.Invoke();
+    }
+
+    private void Update()
+    {
+        TryGetPlayers();
+
+        if (player1 != null) return;
+        if (player2 != null) return;
+        print("AWDFAWDAWD");
+        
+        if (player1Health.health <= 0)
+            StartCoroutine(EndRound(2));
+        
+        if (player2Health.health <= 0)
+            StartCoroutine(EndRound(1));
     }
 }
