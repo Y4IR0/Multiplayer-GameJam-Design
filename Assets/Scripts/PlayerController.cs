@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 aim;
+    private Vector3 defaultScale;
 
     private PlayerInput playerInput;
     private CharacterController characterController;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
+        defaultScale = transform.localScale;
     }
 
     void Update()
@@ -46,6 +48,13 @@ public class PlayerController : MonoBehaviour
             gun.gameObject.SetActive(true);
             float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            
+            // Flipping
+            bool isFlipped = angle > 90 || angle < -90;
+            if (isFlipped)
+                transform.localScale = new Vector3(defaultScale.x, -defaultScale.y, defaultScale.z);
+            else
+                transform.localScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
         }
         else
         {
