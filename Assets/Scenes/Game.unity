@@ -864,13 +864,15 @@ MonoBehaviour:
   npcSpawnAmount: 300
   player1: {fileID: 0}
   player2: {fileID: 0}
+  player1Health: {fileID: 0}
+  player2Health: {fileID: 0}
   roundEnd:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 627932418}
         m_TargetAssemblyTypeName: EndCanvas, Assembly-CSharp
         m_MethodName: RoundEnd
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
