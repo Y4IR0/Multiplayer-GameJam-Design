@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 5276793116826107364}
   - component: {fileID: 4447012377212482416}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player Red
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710120091675718626}
   - component: {fileID: 2044331749849620213}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
