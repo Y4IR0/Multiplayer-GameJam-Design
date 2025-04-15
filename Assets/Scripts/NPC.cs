@@ -37,8 +37,8 @@ public class NPC : MonoBehaviour
         Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
         Vector2 targetPosition = currentPosition;
         
-        float x = Random.Range(-5, 5);
-        float y = Random.Range(-5, 5);
+        float x = Random.Range(-5f, 5f);
+        float y = Random.Range(-5f, 5f);
         
         targetPosition += new Vector2(x, y);
         

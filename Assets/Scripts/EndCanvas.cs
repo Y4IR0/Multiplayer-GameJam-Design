@@ -81,7 +81,7 @@ public class EndCanvas : MonoBehaviour
                 message = winnerColor + " clutches the win!";
                 break;
             case 6:
-                message = winnerColor + " is on FIRE! 🔥🔥🔥";
+                message = winnerColor + " is on FIRE!";
                 break;
             case 7:
                 message = winnerColor + " cooked the round to perfection!!";
