@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using SmoothShakeFree;
 
 public class Shooting : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class Shooting : MonoBehaviour
 
     private PlayerInput playerInput;
     private PlayerController playerController;
+    
+    private SmoothShake smoothShake;
 
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         playerController = GetComponent<PlayerController>();
+        smoothShake = transform.GetChild(4).GetComponent<SmoothShake>();
     }
 
     void Update()
@@ -33,5 +37,7 @@ public class Shooting : MonoBehaviour
     {
         GameObject spawnedBullet = Instantiate(bullet, muzzle.position, muzzle.rotation);
         spawnedBullet.GetComponent<Bullet>().shooter = gameObject;
+        
+        smoothShake.StartShake();
     }
 }
