@@ -119,5 +119,11 @@ public class GameManager : MonoBehaviour
 
         if (player2Health.health <= 0 || player2Health.penalties >= 3)
             StartCoroutine(EndRound(1));
+        
+        player1.GetChild(2).GetComponent<SpriteRenderer>().enabled = false;
+        player2.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+        
+        player1.GetChild(4).GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Player1Mask", "Water", "UI", "Player1Visual");
+        player2.GetChild(4).GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Player2Mask", "Water", "UI", "Player2Visual");
     }
 }
