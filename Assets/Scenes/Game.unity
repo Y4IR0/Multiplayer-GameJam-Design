@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementBoundary: {fileID: 1616354308}
   NPCPrefab: {fileID: 2231929348018278947, guid: e43b7b84c243e3345aeca7d84d6f5f74, type: 3}
-  npcSpawnAmount: 300
+  npcSpawnAmount: 75
   player1: {fileID: 0}
   player2: {fileID: 0}
   player1Health: {fileID: 0}
