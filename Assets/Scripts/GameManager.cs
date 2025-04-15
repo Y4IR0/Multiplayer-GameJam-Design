@@ -95,12 +95,17 @@ public class GameManager : MonoBehaviour
 
         if (player1 != null) return;
         if (player2 != null) return;
+        if (player1Health != null) return;
+        if (player2Health != null) return;
         print("AWDFAWDAWD");
-        
-        if (player1Health.health <= 0 || player1Health.penalties >= 3)
-            StartCoroutine(EndRound(2));
-        
-        if (player2Health.health <= 0 || player2Health.penalties >= 3)
-            StartCoroutine(EndRound(1));
+
+        if (player1Health != null && player2Health != null)
+        {
+            if (player1Health.health <= 0 || player1Health.penalties >= 3)
+                StartCoroutine(EndRound(2));
+
+            if (player2Health.health <= 0 || player2Health.penalties >= 3)
+                StartCoroutine(EndRound(1));
+        }
     }
 }

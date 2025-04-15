@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5f;
     public float controllerDeadzone = 0.1f;
 
     public GameObject gun;
@@ -13,20 +13,24 @@ public class PlayerController : MonoBehaviour
     private Vector3 defaultScale;
 
     private PlayerInput playerInput;
-    private CharacterController characterController;
+    private Rigidbody2D rb;
 
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody2D>();
         defaultScale = transform.localScale;
     }
 
     void Update()
     {
         HandleInput();
-        HandleMovement();
         HandleRotation();
+    }
+
+    void FixedUpdate()
+    {
+        HandleMovement();
     }
 
     private void HandleInput()
@@ -37,28 +41,24 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 move = new Vector3(movement.x, movement.y);
-        characterController.Move(move * Time.deltaTime * moveSpeed);
+        rb.linearVelocity = movement * moveSpeed;
     }
 
     private void HandleRotation()
     {
         if (aim.sqrMagnitude > controllerDeadzone * controllerDeadzone)
         {
-            gun.gameObject.SetActive(true);
+            gun.SetActive(true);
             float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            
-            // Flipping
+
+            // Flip sprite
             bool isFlipped = angle > 90 || angle < -90;
-            if (isFlipped)
-                transform.localScale = new Vector3(defaultScale.x, -defaultScale.y, defaultScale.z);
-            else
-                transform.localScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
+            transform.localScale = new Vector3(defaultScale.x, isFlipped ? -defaultScale.y : defaultScale.y, defaultScale.z);
         }
         else
         {
-            gun.gameObject.SetActive(false);
+            gun.SetActive(false);
         }
     }
 }
