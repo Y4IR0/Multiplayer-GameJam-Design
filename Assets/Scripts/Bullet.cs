@@ -5,8 +5,9 @@ public class Bullet : MonoBehaviour
 {
     [DoNotSerialize] public GameObject shooter; // Will be set when instantiating
 
-    public float speed = 10f;
+    public float speed = 20f;
     public float lifeTime;
+    public int damage = 1;
 
     void Start()
     {
@@ -31,7 +32,9 @@ public class Bullet : MonoBehaviour
         else if (collision.gameObject.CompareTag("Player")) 
         {
             Health health = collision.gameObject.GetComponent<Health>();
-            health.health -= 1;
+            health.health -= damage;
+            
+            Destroy(gameObject);
         }
     }
 }

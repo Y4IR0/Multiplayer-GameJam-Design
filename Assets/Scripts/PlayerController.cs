@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
     {
         if (aim.sqrMagnitude > controllerDeadzone * controllerDeadzone)
         {
-            gun.SetActive(true);
+            //gun.SetActive(true);
+            gun.GetComponent<SpriteHider>().hideChildrenSprites = false;
             float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
@@ -58,7 +59,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gun.SetActive(false);
+            //gun.SetActive(false);
+            gun.GetComponent<SpriteHider>().hideChildrenSprites = true;
         }
     }
+    
+    
 }

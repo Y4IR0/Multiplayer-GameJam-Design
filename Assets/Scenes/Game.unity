@@ -1518,12 +1518,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementBoundary: {fileID: 1616354308}
+  GunSpawnerPrefab: {fileID: 307339910851089551, guid: aa7d45d93b9fa5d4a8e4ea8c518372db, type: 3}
+  currentGunSpawner: {fileID: 0}
   NPCPrefab: {fileID: 2231929348018278947, guid: e43b7b84c243e3345aeca7d84d6f5f74, type: 3}
   npcSpawnAmount: 75
   player1: {fileID: 0}
   player2: {fileID: 0}
   player1Health: {fileID: 0}
   player2Health: {fileID: 0}
+  player1Shooting: {fileID: 0}
+  player2Shooting: {fileID: 0}
   roundEnd:
     m_PersistentCalls:
       m_Calls:
