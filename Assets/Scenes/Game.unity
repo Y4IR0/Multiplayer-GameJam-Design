@@ -1520,6 +1520,8 @@ MonoBehaviour:
   movementBoundary: {fileID: 1616354308}
   GunSpawnerPrefab: {fileID: 307339910851089551, guid: aa7d45d93b9fa5d4a8e4ea8c518372db, type: 3}
   currentGunSpawner: {fileID: 0}
+  CoinPrefab: {fileID: 1467095149398991024, guid: b61cc52ee4e7e864e99f07e6e652839c, type: 3}
+  currentCoins: []
   NPCPrefab: {fileID: 2231929348018278947, guid: e43b7b84c243e3345aeca7d84d6f5f74, type: 3}
   npcSpawnAmount: 75
   player1: {fileID: 0}

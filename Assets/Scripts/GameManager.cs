@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Transform GunSpawnerPrefab;
     public Transform currentGunSpawner;
+
+    public Transform CoinPrefab;
+    public List<Transform> currentCoins = new List<Transform>();
 
     public Transform NPCPrefab;
     public float npcSpawnAmount = 100;
@@ -110,6 +114,9 @@ public class GameManager : MonoBehaviour
 
         player1Health.penalties = 0;
         player2Health.penalties = 0;
+        
+        player1Health.coins = 0;
+        player2Health.coins = 0;
 
         player1Shooting.currentGun = Shooting.Gun.Pistol;
         player2Shooting.currentGun = Shooting.Gun.Pistol;
@@ -118,6 +125,13 @@ public class GameManager : MonoBehaviour
         {
             currentGunSpawner = Instantiate(GunSpawnerPrefab);
             currentGunSpawner.position = GetRandomSpawnPosition();
+        }
+
+        while (currentCoins.Count < 10)
+        {
+            Transform newCoin = Instantiate(CoinPrefab);
+            newCoin.position = GetRandomSpawnPosition();
+            currentCoins.Add(newCoin);
         }
     }
 
@@ -130,10 +144,10 @@ public class GameManager : MonoBehaviour
         if (player1Health == null) return;
         if (player2Health == null) return;
         
-        if (player1Health.health <= 0 || player1Health.penalties >= 5)
+        if (player1Health.health <= 0 || player1Health.penalties >= 5 || player2Health.coins >= 5)
             StartCoroutine(EndRound(2));
 
-        if (player2Health.health <= 0 || player2Health.penalties >= 5)
+        if (player2Health.health <= 0 || player2Health.penalties >= 5 || player1Health.coins >= 5)
             StartCoroutine(EndRound(1));
         
         player1.GetChild(2).GetComponent<SpriteRenderer>().enabled = false;
