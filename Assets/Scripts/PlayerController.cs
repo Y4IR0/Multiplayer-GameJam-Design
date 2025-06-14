@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public float controllerDeadzone = 0.1f;
 
     public GameObject gun;
-
+    public bool isAiming = false;
+    
     private Vector2 movement;
     private Vector2 aim;
     private Vector3 defaultScale;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         if (aim.sqrMagnitude > controllerDeadzone * controllerDeadzone)
         {
+            isAiming = true;
+            
             //gun.SetActive(true);
             gun.GetComponent<SpriteHider>().hideChildrenSprites = false;
             float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
@@ -59,6 +62,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            isAiming = false;
+            
             //gun.SetActive(false);
             gun.GetComponent<SpriteHider>().hideChildrenSprites = true;
         }

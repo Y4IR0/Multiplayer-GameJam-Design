@@ -37,7 +37,7 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if (playerController.gun.gameObject.activeSelf)
+        if (playerController.gun.gameObject.activeSelf && playerController.isAiming)
         {
             switch (currentGun)
             {
