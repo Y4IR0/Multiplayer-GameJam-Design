@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
 
     public Transform CoinPrefab;
     public List<Transform> currentCoins = new List<Transform>();
+    public float coinSpawnAmount = 10;
 
     public Transform NPCPrefab;
+    public List<Transform> currentNPCs = new List<Transform>();
     public float npcSpawnAmount = 100;
     
     public Transform player1;
@@ -127,11 +129,18 @@ public class GameManager : MonoBehaviour
             currentGunSpawner.position = GetRandomSpawnPosition();
         }
 
-        while (currentCoins.Count < 10)
+        while (currentCoins.Count < coinSpawnAmount)
         {
             Transform newCoin = Instantiate(CoinPrefab);
             newCoin.position = GetRandomSpawnPosition();
             currentCoins.Add(newCoin);
+        }
+        
+        while (currentNPCs.Count < npcSpawnAmount)
+        {
+            Transform newNPC = Instantiate(NPCPrefab);
+            newNPC.position = GetRandomSpawnPosition();
+            currentNPCs.Add(newNPC);
         }
     }
 

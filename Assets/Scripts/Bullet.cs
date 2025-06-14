@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
             Health health = shooter.GetComponent<Health>();
             health.penalties += 1;
 
+            GameManager.instance.currentNPCs.Remove(collision.transform);
+            
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
