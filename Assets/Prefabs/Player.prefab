@@ -336,6 +336,7 @@ MonoBehaviour:
   moveSpeed: 2
   controllerDeadzone: 0.2
   gun: {fileID: 682524181303860948}
+  isAiming: 0
 --- !u!114 &1866315752388180101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +352,7 @@ MonoBehaviour:
   health: 2
   playerIDTag: 0
   penalties: 0
+  coins: 0
 --- !u!114 &6460987146883734719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,7 +866,7 @@ MonoBehaviour:
     amplitude: {x: 0.3, y: 0.3, z: 0.3}
     frequency: {x: 0, y: 0, z: 0}
   rotationShake:
-    noiseType: 1
+    noiseType: 0
     amplitude: {x: 0, y: 0, z: 0}
     frequency: {x: 0, y: 0, z: 0}
 --- !u!1 &7607194528008308554

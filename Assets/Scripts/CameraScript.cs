@@ -14,4 +14,14 @@ public class CameraScript : MonoBehaviour
         yield return new WaitForEndOfFrame();
         transform.rotation = Quaternion.identity;
     }
+
+    void LateUpdate()
+    {
+        transform.rotation = Quaternion.identity;
+    }
+
+    void FixedUpdate()
+    {
+        transform.rotation = Quaternion.identity;
+    }
 }
